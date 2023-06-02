@@ -14,6 +14,8 @@ function Button({
     small = false,
     large = false,
     children,
+    leftIcon,
+    rightIcon,
     onClick,
     className,
     ...passPros
@@ -51,7 +53,9 @@ function Button({
 
     return (
         <Comp className={classes} {...props}>
-            {children}
+            {leftIcon && <span className={cx('icon')}>{leftIcon}</span>}
+            <span className={cx('title')}>{children}</span>
+            {rightIcon && <span className={cx('icon')}>{rightIcon}</span>}
         </Comp>
     );
 }
