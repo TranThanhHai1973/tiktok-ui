@@ -8,21 +8,44 @@ import {
     faKeyboard,
     faCircleQuestion,
     faEarthAsia,
+    faCloudArrowUp,
+    faUser,
+    faCoins,
+    faGear,
+    faSignOut,
 } from '@fortawesome/free-solid-svg-icons';
 import classNames from 'classnames/bind';
-import Tippy from '@tippyjs/react/headless';
+import Tippy from '@tippyjs/react';
+import HeadlessTippy from '@tippyjs/react/headless';
 import Button from '~/Componments/Button';
 import styles from './Header.module.scss';
 import { Wrapper as PopperWrapper } from '~/Componments/Popper';
 import AccountItem from '~/Componments/AccountItem';
 import Menu from '~/Componments/Popper/Menu';
+import 'tippy.js/dist/tippy.css';
 
 const cx = classNames.bind(styles);
+
+const currentuser = true;
 
 const MENU_ITEMS = [
     {
         icon: <FontAwesomeIcon icon={faEarthAsia} />,
         title: 'English',
+        children: {
+            data: [
+                {
+                    type: 'language',
+                    code: 'en',
+                    title: 'English',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'TiếngViệt',
+                },
+            ],
+        },
     },
     {
         icon: <FontAwesomeIcon icon={faCircleQuestion} />,
@@ -35,6 +58,31 @@ const MENU_ITEMS = [
     },
 ];
 
+const usermenu = [
+    {
+        icon: <FontAwesomeIcon icon={faUser} />,
+        title: 'View profile',
+        to: '/@hoaa',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faCoins} />,
+        title: 'Get coints',
+        to: '/coin',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faGear} />,
+        title: 'Settings',
+        to: '/Settings',
+    },
+    ...MENU_ITEMS,
+    {
+        icon: <FontAwesomeIcon icon={faSignOut} />,
+        title: 'Log Out',
+        to: '/logout',
+        separate: true,
+    },
+];
+
 function Header() {
     const [searchResult, setSearchResult] = useState([]);
     useEffect(() => {
@@ -42,6 +90,16 @@ function Header() {
             setSearchResult([]);
         }, 0);
     });
+
+    //handle logic
+    const handleMenuChange = (menuItem) => {
+        switch (menuItem.type) {
+            case 'language':
+                break;
+            default:
+        }
+    };
+
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
@@ -82,7 +140,7 @@ function Header() {
                         ></path>
                     </svg>
                 </div>
-                <Tippy
+                <HeadlessTippy
                     interactive
                     visible={searchResult.length > 0}
                     render={(attrs) => (
@@ -108,16 +166,32 @@ function Header() {
                             <FontAwesomeIcon icon={faMagnifyingGlass} />
                         </button>
                     </div>
-                </Tippy>
-
+                </HeadlessTippy>
                 <div className={cx('actions')}>
-                    <Button text>UpLoad</Button>
-                    <Button primary>Log In</Button>
-
-                    <Menu items={MENU_ITEMS}>
-                        <button className={cx('more-btn')}>
-                            <FontAwesomeIcon icon={faEllipsisVertical} />
-                        </button>
+                    {currentuser ? (
+                        <Tippy delay={[0, 200]} content="Upload Video" placement="bottom">
+                            <button className={cx('action-btn')}>
+                                <FontAwesomeIcon icon={faCloudArrowUp} />
+                            </button>
+                        </Tippy>
+                    ) : (
+                        <div>
+                            <Button text>UpLoad</Button>
+                            <Button primary>Log In</Button>
+                        </div>
+                    )}
+                    <Menu items={currentuser ? usermenu : MENU_ITEMS} onChange={handleMenuChange}>
+                        {currentuser ? (
+                            <img
+                                className={cx('user-avatar')}
+                                alt="Nguyen Van A"
+                                src="https://i.pinimg.com/564x/82/a0/98/82a098905f99847d342b015fa29dcad9.jpg"
+                            />
+                        ) : (
+                            <button className={cx('more-btn')}>
+                                <FontAwesomeIcon icon={faEllipsisVertical} />
+                            </button>
+                        )}
                     </Menu>
                 </div>
             </div>
