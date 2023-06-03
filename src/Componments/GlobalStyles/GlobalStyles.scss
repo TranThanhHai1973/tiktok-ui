@@ -1,15 +1,16 @@
 @import 'normalize.css';
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,700;1,200;1,400;1,500;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@300,400,500,600,700;900&display=swap');
 
 :root {
     --primary: #fe2c55;
     --black: #000;
-    --text-color: #333;
+    --text-color: #161823;
     --while: #fff;
 
     //default layout
     --default-layout-header-height: 60px;
     --default-layout-witdh: 1150px;
+    --default-layout-horizontal-space: 24px;
 }
 * {
     margin: 0;
@@ -39,4 +40,22 @@ input,
 a[href] {
     color: var(--black);
     text-decoration: none;
+}
+
+//Custom tippy toolt
+body {
+    .tippy-box {
+        border-radius: 8px;
+        font-size: 1.6rem;
+        font-weight: 600;
+        line-height: 2.2rem;
+        background-color: rgba(84, 84, 84, 0.92);
+    }
+
+    .tippy-arrow {
+        color: rgba(84, 84, 84, 0.92);
+    }
+    .tippy-content {
+        padding: 8px 9px;
+    }
 }
