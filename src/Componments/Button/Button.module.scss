@@ -1,13 +1,14 @@
 .wrapper {
     font-size: 1.6rem;
     font-weight: 600px;
-    min-width: 100px;
+    font-family: 'ProximaNova', sans-serif;
     padding: 9px 16px;
     border-radius: 4px;
-    cursor: pointer;
-    background-color: var(--while);
     border: 1px solid transparent;
+    background-color: var(--while);
+    cursor: pointer;
     user-select: none;
+    min-width: 100px;
     + .wrapper {
         margin-left: 8px;
     }
