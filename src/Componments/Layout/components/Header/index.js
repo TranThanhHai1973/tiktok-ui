@@ -17,8 +17,10 @@ import Menu from '~/Componments/Popper/Menu';
 import 'tippy.js/dist/tippy.css';
 import { UploadIcon, MessageIcon, InboxIcon } from '~/Componments/icons';
 import Search from '~/Componments/Layout/components/Search';
+import routesConfig from '~/config/routes';
 
 import Image from '~/Componments/Image';
+import { Link } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 
@@ -92,7 +94,7 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <div className={cx('logo')}>
+                <Link to={routesConfig.home} className={cx('logo-link')}>
                     {' '}
                     <svg xmlns="http://www.w3.org/2000/svg" width="118" height="42" fill="currentColor" alt="TikTok">
                         <path
@@ -128,7 +130,7 @@ function Header() {
                             d="M91.58 28.887a3.94 3.94 0 0 1-3.94-3.945 3.94 3.94 0 1 1 7.882 0c0 2.18-1.77 3.945-3.942 3.945Zm0-12.058c-4.477 0-8.106 3.631-8.106 8.113 0 4.482 3.629 8.113 8.106 8.113 4.478 0 8.106-3.631 8.106-8.113 0-4.482-3.628-8.113-8.106-8.113Z"
                         ></path>
                     </svg>
-                </div>
+                </Link>
                 {/* search */}
                 <Search />
 

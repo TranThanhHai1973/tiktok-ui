@@ -6,6 +6,7 @@
     --while: #fff;
 
     //default layout
+    --font-family: 'ProximaNova', sans-serif;
     --default-layout-header-height: 60px;
     --default-layout-witdh: 1150px;
     --default-layout-horizontal-space: 24px;
@@ -21,7 +22,7 @@ html {
 }
 
 body {
-    font-family: 'ProximaNova', sans-serif;
+    font-family: var(--font-family);
     font-size: 1.6rem;
     line-height: 1.5;
     text-rendering: optimizeSpeed;
