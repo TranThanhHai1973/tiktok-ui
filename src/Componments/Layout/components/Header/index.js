@@ -40,7 +40,7 @@ const MENU_ITEMS = [
                 {
                     type: 'language',
                     code: 'vi',
-                    title: 'TiếngViệt',
+                    title: 'Tiếng Việt',
                 },
             ],
         },
