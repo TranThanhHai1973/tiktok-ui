@@ -24,7 +24,7 @@ import { Link } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 
-const currentuser = true;
+const currentuser = false;
 
 const MENU_ITEMS = [
     {
