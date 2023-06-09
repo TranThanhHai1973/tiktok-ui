@@ -1,4 +1,5 @@
 import { forwardRef } from 'react';
+import PropTypes from 'prop-types';
 import { useState } from 'react';
 import images from '~/assets/images';
 import styles from '~/Componments/Image/Image.module.scss';
@@ -11,6 +12,7 @@ const Image = forwardRef(({ src, className, fallback: customFallback = images.no
         setFullback(customFallback);
     };
     return (
+        // eslint-disable-next-line jsx-a11y/alt-text
         <img
             ref={ref}
             className={classNames(styles.wrapper, className)}
@@ -21,4 +23,10 @@ const Image = forwardRef(({ src, className, fallback: customFallback = images.no
     );
 });
 
+Image.propTypes = {
+    src: PropTypes.string,
+    alt: PropTypes.string,
+    className: PropTypes.string,
+    fallback: PropTypes.string,
+};
 export default Image;

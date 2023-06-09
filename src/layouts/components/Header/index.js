@@ -16,8 +16,8 @@ import styles from './Header.module.scss';
 import Menu from '~/Componments/Popper/Menu';
 import 'tippy.js/dist/tippy.css';
 import { UploadIcon, MessageIcon, InboxIcon } from '~/Componments/icons';
-import Search from '~/Componments/Layout/components/Search';
-import routesConfig from '~/config/routes';
+import Search from '~/layouts/components/Search';
+import config from '~/config';
 
 import Image from '~/Componments/Image';
 import { Link } from 'react-router-dom';
@@ -94,7 +94,7 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <Link to={routesConfig.home} className={cx('logo-link')}>
+                <Link to={config.routes.home} className={cx('logo-link')}>
                     {' '}
                     <svg xmlns="http://www.w3.org/2000/svg" width="118" height="42" fill="currentColor" alt="TikTok">
                         <path
@@ -131,6 +131,7 @@ function Header() {
                         ></path>
                     </svg>
                 </Link>
+
                 {/* search */}
                 <Search />
 
@@ -166,7 +167,7 @@ function Header() {
                             <Image
                                 className={cx('user-avatar')}
                                 alt="Nguyen Van A"
-                                src="https://ii.pinimg.com/564x/82/a0/98/82a098905f99847d342b015fa29dcad9.jpg"
+                                src="https://i.pinimg.com/564x/82/a0/98/82a098905f99847d342b015fa29dcad9.jpg"
                             />
                         ) : (
                             <button className={cx('more-btn')}>
